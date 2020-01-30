@@ -2,6 +2,9 @@ const express = require('express');
 const router  = express.Router();
 const Generate = require('../services/generate.servise')
 const callETL = require('../helpers/callETL.helper')
+const logToken= require("../services/longToken.servise")
+const autGenerate = require("../services/aut.servise")
+
 /* GET home page. */
 router.get('/', (req, res, next) => {
   res.render('index');
@@ -22,7 +25,16 @@ router.get('/generate',async (req, res, next) => {
 
 });
 
+router.get('/token',async (req,res,next)=>{
+  res.send({create : await logToken(req.body.user)}) 
+})
 
+router.get('/generate/aut', (req,res,next)=>{
+   autGenerate(req.query.records).then(e=>{
+     res.send("ok")
+   })
+
+})
 
 
 

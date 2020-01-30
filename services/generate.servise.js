@@ -4,7 +4,7 @@ const allSettled = require('promise.allsettled');
 
 allSettled.shim();
 module.exports = Generate=async(id,page=true,feed=false,records)=>{
-    let tokens =await getTokens(id,page,feed)
+    let tokens =await getTokens(id,page,feed,records)
     let response
     await Promise.allSettled(tokens)
     .then(e=>{

@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Prod",
+        "type": "mysql",
+        "host": "ls-5e531f586183bdb9627025a05b5b3b7f206245aa.cnz9raiumfbl.us-east-1.rds.amazonaws.com",
+        "port": 3306,
+        "username": "prd_squint_reader",
+        "password": "prd_ApiSquint.19",
+        "database": "squint_admin",
+        "synchronize": false,
+        "logging": false,
+        "entities": [
+            "app/models/**/*.ts"
+        ],
+        "cli": {
+            "entitiesDir": "app/models"
+        },
+        "autoSchemaSync": true
+    }
+]

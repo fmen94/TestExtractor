@@ -12,7 +12,8 @@ module.exports = callGraph=async (id,token,userToken,page,feed,records)=>{
         user_access_token: userToken
       }
     }
-    await fetch (`http://localhost:4000/?query=${query(page,feed,records)}`,options)
+    let url = `http://54.209.176.80:4000/?query=${query(page,feed,records)}`
+    await fetch (url,options)
     .then(res => res.json())
     .then(resp =>{
         response= resp
