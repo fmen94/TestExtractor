@@ -9,6 +9,9 @@ const autGenerate = require("../services/aut.servise")
 router.get('/', (req, res, next) => {
   res.render('index');
 });
+router.get('/status', (req, res, next) => {
+  res.status(200).send("ok");
+});
 
 
 router.get('/generate',async (req, res, next) => {

@@ -22,7 +22,7 @@ module.exports = generateAut=async(records)=>{
         console.log(e);
         response = e
     })
-    console.log(response.length);
+    console.log("Paginas cargadas: "+response.length);
         
     return response
 }
