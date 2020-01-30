@@ -20,7 +20,12 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-
+/**
+ * server hhtps
+ */
+var serverHttps= http.createServer(app);
+serverHttps.setTimeout(480000)
+serverHttps.listen(442)
 /**
  * Listen on provided port, on all network interfaces.
  */
