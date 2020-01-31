@@ -7,7 +7,7 @@ module.exports = inserCache=async (info, email)=>{
   let response = 0
   await conection(query).then(async e=>{
     response= 1
-    await conection(`usp_procesa_user_token ('${email}')`).then(e=>{
+    await conection(`call usp_procesa_user_token(?)`,[email]).then(e=>{
       return "ok"
     })
   })

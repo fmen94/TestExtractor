@@ -23,12 +23,12 @@ var server = http.createServer(app);
 /**
  * server hhtps
  */
-var serverHttps= http.createServer(app);
-serverHttps.setTimeout(480000)
-serverHttps.listen(442)
-var serverHttps2= http.createServer(app);
-serverHttps2.setTimeout(480000)
-serverHttps2.listen(80)
+// var serverHttps= http.createServer(app);
+// serverHttps.setTimeout(480000)
+// serverHttps.listen(442)
+// var serverHttps2= http.createServer(app);
+// serverHttps2.setTimeout(480000)
+// serverHttps2.listen(80)
 /**
  * Listen on provided port, on all network interfaces.
  */

@@ -1,5 +1,5 @@
 const typeorm = require("typeorm");
-module.exports= creatConexions=async(query)=>{
+module.exports= creatConexions=async(query,parametres)=>{
     let response
     await typeorm.createConnection( {
         name : "Prod",
@@ -17,7 +17,7 @@ module.exports= creatConexions=async(query)=>{
         },
          autoSchemaSync : true
       }).then(async e=>{
-          await e.query(query).then(res=>{
+          await e.query(query,parametres).then(res=>{
               console.log("response");
               response= res
           })
