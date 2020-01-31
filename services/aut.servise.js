@@ -29,12 +29,14 @@ module.exports = generateAut=async(records)=>{
 }
 
 const query= `
-    SELECT 
-    (select token from squint_user_pages where page_id=page_id order by last_update_date desc limit 1  ) as page_token,
-    page_id,
-    (select t2.long_time_token from squint_user_pages t1   INNER JOIN
-    squint_user_network_token t2 ON t1.user_id = t2.user_id  where page_id=page_id order by t1.last_update_date desc limit 1  ) AS user_token
-    FROM
-    squint_user_pages t1
-    group by page_id
+SELECT 
+(select token from squint_user_pages where page_id=a.page_id order by last_update_date desc limit 1  ) as page_token,
+a.page_id,
+(select t2.long_time_token from squint_user_pages t1   INNER JOIN
+squint_user_network_token t2 ON t1.user_id = t2.user_id  where page_id=a.page_id order by t1.last_update_date desc limit 1  ) AS user_token
+FROM
+squint_user_pages a
+inner join squint_pages b on a.page_id = b.page_id
+where b.network_id ='FB'
+group by page_id
 `
