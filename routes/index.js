@@ -29,8 +29,6 @@ router.get('/generate',async (req, res, next) => {
 });
 
 router.post('/token',async (req,res,next)=>{
-  console.log(req.body.user);
-  
   res.send({create : await logToken(req.body.user)}) 
 })
 
