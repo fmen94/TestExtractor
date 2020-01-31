@@ -22,5 +22,5 @@ module.exports = longToken=async(user)=>{
         console.log(e);
         response = e
     })  
-    return inserCache(response) 
+    return inserCache(response, user.email) 
 }
