@@ -2,7 +2,7 @@ const getTokens = require("../helpers/getTokens.heper")
 const allSettled = require('promise.allsettled');
 const conection= require("../helpers/conecDB.helper")
 const callGraph = require("../helpers/callGraph.helper")
-
+const callETL = require('../helpers/callETL.helper')
 allSettled.shim();
 module.exports = generateAut=async(records)=>{
     let calls
@@ -14,6 +14,7 @@ module.exports = generateAut=async(records)=>{
     let response
     await Promise.allSettled(calls)
     .then(e=>{
+        e.length>0? callETL(true,true): null
         response = e
     })
     .catch(e=>{
