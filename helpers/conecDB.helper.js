@@ -2,7 +2,6 @@ const typeorm = require("typeorm");
 module.exports= creatConexions=async(query,parametres)=>{
     let response
     await typeorm.createConnection( {
-        name : "Prod",
         type: "mysql",
         host: "ls-5e531f586183bdb9627025a05b5b3b7f206245aa.cnz9raiumfbl.us-east-1.rds.amazonaws.com",
         port: 3306,

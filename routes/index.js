@@ -36,6 +36,10 @@ router.get('/generate/aut', (req,res,next)=>{
    autGenerate(req.query.records).then(e=>{
      res.send("ok")
    })
+   .catch(e=>{
+     console.log("Error generate"+e);
+     
+   })
 
 })
 

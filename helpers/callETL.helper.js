@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 module.exports = callETL=async (page,feed)=>{
     let response=[]
     if(page){
-      await fetch (`http://ec2-54-236-7-101.compute-1.amazonaws.com:8081/api/v1/process/FBv2_JobPageCountersAPI`)
+      await fetch (`http://ec2-54-85-49-168.compute-1.amazonaws.com:3000/api/v1/submit/FBv2_JobPageCountersAPI`)
       .then(res => res.json())
       .then(resp =>{
           response.push(resp)
@@ -15,7 +15,7 @@ module.exports = callETL=async (page,feed)=>{
       })
     }
     if(feed){
-      await fetch (`http://ec2-54-236-7-101.compute-1.amazonaws.com:8081/api/v1/process/FBv2_JobFeedCountersAPI`)
+      await fetch (`http://ec2-54-85-49-168.compute-1.amazonaws.com:3000/api/v1/submit/FBv2_JobFeedCountersAPI`)
       .then(res => res.json())
       .then(resp =>{
           response.push(resp)
