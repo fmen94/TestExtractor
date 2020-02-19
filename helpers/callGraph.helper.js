@@ -7,6 +7,7 @@ module.exports = callGraph=async (id,token,userToken,page,feed,records)=>{
     const options={
       method: "get",
       headers: {
+        "upload_s3":true,
         page_id: id,
         page_access_token: token,
         user_access_token: userToken
