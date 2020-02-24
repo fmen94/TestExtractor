@@ -17,11 +17,11 @@ module.exports= creatConexions=async(query,parametres)=>{
          autoSchemaSync : true
       }).then(async e=>{
           await e.query(query,parametres).then(res=>{
-              console.log("response");
+             
               response= res
           })
           await e.close().then(e=>{
-              console.log("Clouse");
+            
           })
            
         })

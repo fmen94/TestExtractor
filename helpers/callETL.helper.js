@@ -1,4 +1,4 @@
-const query= require("./query.helper")
+
 const fetch = require('node-fetch');
 
 
