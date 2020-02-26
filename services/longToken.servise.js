@@ -7,7 +7,7 @@ allSettled.shim();
 module.exports = longToken=async(user,owner)=>{
     let userLT = await getLongToken(user.token)
     let pages =await getTokens(userLT,null,null,null,true)
-    let tokens= pages.map(e=>getLongToken(e.access_token))
+    let tokens= pages.map(e=>getLongToken(e.access_token)) 
     let igInfo= pages.map(e=>e.instagram_business_account? getIG(e.instagram_business_account.id,e.id,e.access_token): null )
     let response
     await Promise.allSettled([...tokens,...igInfo])
