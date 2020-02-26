@@ -29,7 +29,7 @@ router.get('/generate',async (req, res, next) => {
 });
 
 router.post('/token',async (req,res,next)=>{
-  res.send({create : await logToken(req.body.user)}) 
+  res.send({create : await logToken(req.body.user,req.body.owner)}) 
 })
 
 router.get('/generate/aut', (req,res,next)=>{
