@@ -43,6 +43,9 @@ router.get('/generate/aut', (req,res,next)=>{
 
 })
 
+const login =require('../helpers/login/login.helper')
+router.post('/api/v1/login', login)
+
 
 
 module.exports = router;
