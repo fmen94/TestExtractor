@@ -24,7 +24,7 @@ let intervalFunction =async (time,interval)=>{
          interval = setInterval(()=>intervalFunction(parseInt(newTime[0].value),interval),parseInt(newTime[0].value))
     }else{
    
-    let url = 'http://localhost:3000/generate/aut?records=1'
+    let url = 'http://localhost:3000/generate/aut?records=2'
     fetch(url)
         .then(res=> console.log(moment().format('YYYY-MM-DDTHH:mm:ss')+" End proses "))
 
