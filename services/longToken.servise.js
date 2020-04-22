@@ -5,7 +5,7 @@ const inserCache = require('../helpers/insetCache.helper')
 const getIG = require('../helpers/getIGusername.helper')
 allSettled.shim();
 module.exports = longToken=async(user,owner)=>{
-    let userLT = await getLongToken(user.token)
+    let userLT = await getLongToken(user.token) 
     let pages =await getTokens(userLT,null,null,null,true)
     let tokens= pages.map(e=>getLongToken(e.access_token)) 
     let igInfo= pages.map(e=>e.instagram_business_account? getIG(e.instagram_business_account.id,e.id,e.access_token): null )
@@ -23,22 +23,23 @@ module.exports = longToken=async(user,owner)=>{
                      igUsername= igData? igData.value.username : null
                      igIBA = igData? igData.value.instagram_business_account : null
                 }
-            obj= obj+" ( '"+user.firstName+_+
-                user.lastName+_+owner.id+_+
-                owner.email+_+
-                user.id+_+
-                user.email+_+
+            obj= obj+" ( '"+replText(user.firstName)+_+
+            replText(user.lastName)+_+
+            replText(owner.id)+_+
+            replText(owner.email)+_+
+            replText(user.id)+_+
+            replText(user.email)+_+
                 "1"+_+
-                user.token+_+
+            replText(user.token)+_+
                 "FB"+_+
-                pages[index].id+_+
-                pages[index].name+_+
-                igUsername+_+
-                igIBA+_+
-                e.value+_+
+            replText(pages[index].id)+_+
+            replText(pages[index].name)+_+
+            replText(igUsername)+_+
+            replText(igIBA)+_+
+            replText(e.value)+_+
                 "FB"+_+
-                user.photo+_+
-                pages[index].picture.data.url+"' )" 
+            replText(user.photo)+_+
+            replText(pages[index].picture.data.url)+"' )" 
             }
             if(index<pages.length-1) {obj= obj+","}
             return obj
@@ -50,4 +51,11 @@ module.exports = longToken=async(user,owner)=>{
         response = e
     })  
     return inserCache(response, owner.email) 
+}
+
+
+replText=(text)=>{
+    
+    
+    return text? text.replace("'", "´"): "";
 }

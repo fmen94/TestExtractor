@@ -6,9 +6,17 @@ module.exports = inserCache=async (info, email)=>{
   let response = 0
   await conection(query).then(async e=>{
     response= 1
-    await conection(`call usp_procesa_user_token(?)`,[email]).then(e=>{
+    
+    await conection(`call usp_procesa_user_token(?)`,[email]).then(el=>{
+      console.log("SP ok");
+      console.log(el);
+      response= el
       return "ok"
     })
+  }).catch(e=>{
+    console.log("Inser error of "+ email);
+    console.log(e);
+    
   })
   return response
-  }
+  } 
