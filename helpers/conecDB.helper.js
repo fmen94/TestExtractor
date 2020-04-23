@@ -3,11 +3,11 @@ module.exports= creatConexions=async(query,parametres)=>{
     let response
     await typeorm.createConnection( {
         type: "mysql",
-        host: "ls-5e531f586183bdb9627025a05b5b3b7f206245aa.cnz9raiumfbl.us-east-1.rds.amazonaws.com",
+        host: "ls-12d36fc3bdd65f2a11cdf23910a33767e186e18b.cnz9raiumfbl.us-east-1.rds.amazonaws.com",
         port: 3306,
-        username : "prd_squint_reader",
-        password : "prd_ApiSquint.19",
-        database : "squint_admin",
+        username : "squint_user_exractor01",
+        password : "$Fer.Mendez@squint#",
+        database : "squintadmin",
          synchronize : false,
          logging : false,
          entities : [],
