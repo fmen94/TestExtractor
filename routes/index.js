@@ -4,7 +4,25 @@ const Generate = require('../services/generate.servise')
 const callETL = require('../helpers/callETL.helper')
 const logToken= require("../services/longToken.servise")
 const autGenerate = require("../services/aut.servise")
-
+const typeorm = require("typeorm");
+let con
+ typeorm.createConnection( {
+  type: "mysql",
+  host: "ls-12d36fc3bdd65f2a11cdf23910a33767e186e18b.cnz9raiumfbl.us-east-1.rds.amazonaws.com",
+  port: 3306,
+  username : "squint_user_exractor01",
+  password : "$Fer.Mendez@squint#",
+  database : "squintadmin",
+   synchronize : false,
+   logging : false,
+   entities : [],
+   cli : {
+      "entitiesDir": "app/models"
+  },
+   autoSchemaSync : true
+}).then(e=>{
+  console.log("DB conected");
+  con=e})
 /* GET home page. */
 router.get('/', (req, res, next) => {
   res.render('index');
@@ -29,11 +47,11 @@ router.get('/generate',async (req, res, next) => {
 });
 
 router.post('/token',async (req,res,next)=>{
-  res.send({create : await logToken(req.body.user,req.body.owner)}) 
+  res.send({create : await logToken(req.body.user,req.body.owner,con)}) 
 })
 
 router.get('/generate/aut', (req,res,next)=>{
-   autGenerate(req.query.records).then(e=>{
+   autGenerate(req.query.records,con).then(e=>{
      res.send("ok")
    })
    .catch(e=>{

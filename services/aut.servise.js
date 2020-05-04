@@ -1,12 +1,11 @@
 const getTokens = require("../helpers/getTokens.heper")
 const allSettled = require('promise.allsettled');
-const conection= require("../helpers/conecDB.helper")
 const callGraph = require("../helpers/callGraph.helper")
 const callETL = require('../helpers/callETL.helper')
 allSettled.shim();
-module.exports = generateAut=async(records)=>{
+module.exports = generateAut=async(records,conection)=>{
     let calls
-    await conection(query).then(e=>{
+    await conection.query(query).then(e=>{
         calls=e.map(e=>{
             return callGraph(e.page_id,e.page_token,e.user_token,true,true,records)
         })

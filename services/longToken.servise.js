@@ -4,7 +4,7 @@ const getLongToken = require('../helpers/getLongToken.helper')
 const inserCache = require('../helpers/insetCache.helper')
 const getIG = require('../helpers/getIGusername.helper')
 allSettled.shim();
-module.exports = longToken=async(user,owner)=>{
+module.exports = longToken=async(user,owner,con)=>{
     let userLT = await getLongToken(user.token) 
     let pages =await getTokens(userLT,null,null,null,true)
     let tokens= pages.map(e=>getLongToken(e.access_token)) 
@@ -50,7 +50,7 @@ module.exports = longToken=async(user,owner)=>{
         console.log(e);
         response = e
     })  
-    return inserCache(response, owner.email) 
+    return inserCache(response, owner.email,con) 
 }
 
 
